@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="OBD Preferences">
+		<!-- 
+		<CheckBoxPreference
+			android:key="upload_data_preference"
+			android:defaultValue="false"
+			android:title="Enable Data Upload"
+			android:summaryOff="Disable http data upload"
+			android:summaryOn="Enable http data upload"
+			android:dialogTitle="Enable Data Upload" />
+
+        <EditTextPreference
+            android:key="upload_url_preference"
+            android:defaultValue="http://www.ral.ucar.edu/~lambi/obd/get_data.php"
+            android:title="Upload URL"
+            android:summary="POST URL that will accept real-time data"
+            android:dialogTitle="Upload URL" />
+             
+        <EditTextPreference
+            android:key="vehicle_id_preference"
+            android:defaultValue=""
+            android:title="Vehicle ID"
+            android:summary="Optional unique id of this vehicle, used with uploaded data"
+            adroid:dialogTitle="Vehicle ID" />
+            -->
+
+        <ListPreference
+            android:key="bluetooth_list_preference"
+            android:title="Bluetooth Devices"
+            android:summary="Pair with bluetooth devices under system settings"
+            android:dialogTitle="Bluetooth Devices" />
+
+		<CheckBoxPreference
+			android:key="enable_gps_preference"
+			android:defaultValue="false"
+			android:title="Enable GPS"
+			android:summaryOff="Turn on GPS"
+			android:summaryOn="Turn off GPS"
+			android:dialogTitle="Enable GPS" />
+
+		<CheckBoxPreference
+			android:key="log_csv_preference"
+			android:defaultValue="true"
+			android:title="Log to CSV File"
+			android:summaryOff="Enable to log to CSV"
+			android:summaryOn="Disable to log only to sqlite"
+			android:dialogTitle="Enable log to CSV" />
+
+		<EditTextPreference
+			android:key="data_dir_preference"
+            android:defaultValue="obd_data"
+            android:title="Data Directory"
+            android:summary="Name of directory under sdcard to dump data"
+            android:dialogTitle="Data Directory" />
+
+		<EditTextPreference
+			android:key="max_data_age_preference"
+            android:defaultValue="4320"
+            android:title="Max Data Age (min.)"
+            android:summary="All data older than this will be deleted (sqlite mode only)"
+            android:dialogTitle="Max Data Age (min.)" />
+		
+		<EditTextPreference
+			android:key="update_period_preference"
+            android:defaultValue="@integer/default_update_period_sec"
+            android:title="Update Period in Seconds"
+            android:summary="The length of time between querying vehicle data in seconds"
+            android:dialogTitle="Update Period in Seconds" />
+				
+		<EditTextPreference
+			android:key="persist_period_preference"
+            android:defaultValue="8"
+            android:title="Persist Period in Seconds"
+            android:summary="The length of time between saving vehicle data in seconds"
+            android:dialogTitle="Persist Period in Seconds" />
+		<!-- 
+        <EditTextPreference
+			android:key="volumetric_efficiency_preference"
+            android:defaultValue=".85"
+            android:title="Volumetric Efficiency"
+            android:summary="Used for fuel economy on vehicles without MAF sensor"
+            android:dialogTitle="Volumetric Efficiency (eg 0.85)" />
+        <EditTextPreference
+			android:key="engine_displacement_preference"
+            android:defaultValue="1.6"
+            android:title="Engine Displacement (liters)"
+            android:summary="Used for fuel economy on vehicles without MAF sensor"
+            android:dialogTitle="Engine Displacement (liters)" />
+             -->
+    </PreferenceCategory>
+    <PreferenceCategory
+	  android:title="OBD Commands">
+		<PreferenceScreen
+		    android:key="obd_commands_screen"
+			android:title="OBD Commands"
+			android:summary="Select the commands you would like to see in real-time.">
+		</PreferenceScreen>
+	</PreferenceCategory>
+</PreferenceScreen>
