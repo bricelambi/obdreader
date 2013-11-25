@@ -38,6 +38,9 @@ public class ObdReaderConfigActivity extends PreferenceActivity implements OnPre
 	public static final String MAX_DATA_AGE_KEY = "max_data_age_preference";
 	public static final String DATA_DIR_KEY = "data_dir_preference";
 	public static final String LOG_CSV_KEY = "log_csv_preference";
+	
+	public static final String GPS_UPDATE_TIME_KEY = "gps_update_time_preference";
+	public static final String GPS_UPDATE_DIST_KEY = "gps_updaet_dist_preference";
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +52,8 @@ public class ObdReaderConfigActivity extends PreferenceActivity implements OnPre
 		getPreferenceScreen().findPreference(UPDATE_PERIOD_KEY).setOnPreferenceChangeListener(intPrefChangeListener);
 		getPreferenceScreen().findPreference(PERSIST_PERIOD_KEY).setOnPreferenceChangeListener(intPrefChangeListener);
 		getPreferenceScreen().findPreference(MAX_DATA_AGE_KEY).setOnPreferenceChangeListener(intPrefChangeListener);
+		getPreferenceScreen().findPreference(GPS_UPDATE_TIME_KEY).setOnPreferenceChangeListener(intPrefChangeListener);
+		getPreferenceScreen().findPreference(GPS_UPDATE_DIST_KEY).setOnPreferenceChangeListener(intPrefChangeListener);
 
 		final BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
@@ -119,6 +124,12 @@ public class ObdReaderConfigActivity extends PreferenceActivity implements OnPre
 		return false;
 	}
 
+	public static int getGpsUpdateTime(Context ctx) {
+		return getInt(GPS_UPDATE_TIME_KEY,ctx,0);
+	}
+	public static int getGpsUpdateDist(Context ctx) {
+		return getInt(GPS_UPDATE_DIST_KEY,ctx,0);
+	}
 	public static boolean getLogToCsv(Context ctx) {
 		return getBool(LOG_CSV_KEY,ctx,true);
 	}

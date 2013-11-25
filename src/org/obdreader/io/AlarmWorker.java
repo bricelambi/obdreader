@@ -1,5 +1,7 @@
 package org.obdreader.io;
 
+import org.obdreader.activity.ObdReaderConfigActivity;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -14,8 +16,8 @@ import android.util.Log;
 
 public abstract class AlarmWorker implements LocationListener {
 
-	public static final long GPS_UPDATE_TIME = 0;
-	public static final float GPS_UPDATE_DIST = 0.0f;
+	protected long gpsUpdateTime = 0;
+	protected float gpsUpdateDist = 0.0f;
 	
 	public final static String LATITUDE = "Latitude";
 	public final static String LONGITUDE = "Longitude";
@@ -69,7 +71,7 @@ public abstract class AlarmWorker implements LocationListener {
 
 	public void start() {
 		updatePrefs();
-		locationMan.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DIST, this);
+		locationMan.requestLocationUpdates(LocationManager.GPS_PROVIDER, gpsUpdateTime*1000, gpsUpdateDist, this);
 		IntentFilter alarmFilter = new IntentFilter(getAlarmIntent());
 		ctx.registerReceiver(alarmReceiver, alarmFilter);
 		schedule();
@@ -98,7 +100,8 @@ public abstract class AlarmWorker implements LocationListener {
 	}
 
 	protected void updatePrefs() {
-		
+		gpsUpdateDist = ObdReaderConfigActivity.getGpsUpdateDist(ctx);
+		gpsUpdateTime = ObdReaderConfigActivity.getGpsUpdateTime(ctx);
 	}
 
 	protected void sendGpsUpdate() {

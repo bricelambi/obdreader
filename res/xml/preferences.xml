@@ -33,6 +33,7 @@
             android:summary="Pair with bluetooth devices under system settings"
             android:dialogTitle="Bluetooth Devices" />
 
+        <!-- 
 		<CheckBoxPreference
 			android:key="enable_gps_preference"
 			android:defaultValue="false"
@@ -40,6 +41,7 @@
 			android:summaryOff="Turn on GPS"
 			android:summaryOn="Turn off GPS"
 			android:dialogTitle="Enable GPS" />
+			 -->
 
 		<CheckBoxPreference
 			android:key="log_csv_preference"
@@ -76,20 +78,20 @@
             android:title="Persist Period in Seconds"
             android:summary="The length of time between saving vehicle data in seconds"
             android:dialogTitle="Persist Period in Seconds" />
-		<!-- 
+ 
         <EditTextPreference
-			android:key="volumetric_efficiency_preference"
-            android:defaultValue=".85"
-            android:title="Volumetric Efficiency"
-            android:summary="Used for fuel economy on vehicles without MAF sensor"
-            android:dialogTitle="Volumetric Efficiency (eg 0.85)" />
+			android:key="gps_update_dist_preference"
+            android:defaultValue="0"
+            android:title="GPS Distance Sensitivity"
+            android:summary="Minimum distance (m) between gps updates"
+            android:dialogTitle="GPS Distance Sensitivity" />
+
         <EditTextPreference
-			android:key="engine_displacement_preference"
-            android:defaultValue="1.6"
-            android:title="Engine Displacement (liters)"
-            android:summary="Used for fuel economy on vehicles without MAF sensor"
-            android:dialogTitle="Engine Displacement (liters)" />
-             -->
+			android:key="gps_update_time_preference"
+            android:defaultValue="0"
+            android:title="GPS Time Sensitivity"
+            android:summary="Minimum time (sec) between gps updates"
+            android:dialogTitle="GPS Time Sensitivity" />
     </PreferenceCategory>
     <PreferenceCategory
 	  android:title="OBD Commands">
